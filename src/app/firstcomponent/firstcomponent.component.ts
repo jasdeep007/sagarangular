@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-import { combineLatest, forkJoin, interval, Observable, of, zip } from 'rxjs';
+import { combineLatest, forkJoin, interval, observable, Observable, of, zip } from 'rxjs';
 
 @Component({
   selector: 'firstcomponent',
@@ -9,10 +10,55 @@ import { combineLatest, forkJoin, interval, Observable, of, zip } from 'rxjs';
 })
 export class FirstcomponentComponent implements OnInit {
 
+
+
   constructor(private route: ActivatedRoute) { }
+  data: string[] = [];
+
+
+
+  call3methods() {
+    this.first().then((value) => {
+      this.second().then((val)=>{
+        this.third().then((message)=>{
+          alert(message);
+        });
+      });
+    });
+  }
+
+  first(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.data.push('after 5 seconds from first method');
+        resolve('');
+      }, 8000);
+    })
+  }
+  second(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.data.push('after 2 seconds from second method');
+        resolve('');
+      }, 3000);
+    })
+  }
+  third(): Promise<string> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this.data.push('after 1 seconds from third method');
+        resolve('All completed');
+      }, 1000);
+    });
+  }
 
   ngOnInit(): void {
-    alert(this.route.snapshot.params['id']);
+
+    //alert(this.route.snapshot.params['id']);
+
+    this.route.params.subscribe((params: Params) => {
+      const id = (params['id']);
+    });
 
     // this.route.params.subscribe((params: Params) => {
     //   const id = (params['id']);
@@ -28,15 +74,22 @@ export class FirstcomponentComponent implements OnInit {
   }
   callobservable() {
     this.data = [];
-    // this.methodAA().subscribe((value: any) => {
+    // this.methodAA().subscribe((value: any) => { // get states
     //   this.data.push(value);
-    //   this.methodBB().subscribe((val: any) => {
+    //   this.methodBB().subscribe((val: any) => { // get cities
     //     this.data.push(val);
-    //     this.methodCC().subscribe((v: any) => {
-    //       this.data.push(v);
+    //     this.methodCC().subscribe((v: any) => { // get villages
+    //       this.data.push(v);            
     //     });
     //   });
     // });
+
+
+    // loader show krna
+    // jab tk,,, 3 api calls complete ni hojati
+
+
+
 
     // forkJoin({ a: this.methodAA(), b: this.methodBB(), c: this.methodCC() })
     //   .subscribe(({ a, b, c }) => {
@@ -46,12 +99,12 @@ export class FirstcomponentComponent implements OnInit {
     //     this.data.push(c);
     //   });
 
-    combineLatest(this.methodAA(),this.methodBB(),this.methodCC())
-    .subscribe(([a,b,c]) => {
-      this.data.push(a);
-      this.data.push(b);
-      this.data.push(c);
-    });
+    combineLatest(this.methodAA(), this.methodBB(), this.methodCC())
+      .subscribe(([a, b, c]) => {
+        this.data.push(a);
+        this.data.push(b);
+        this.data.push(c);
+      });
 
     // zip(this.methodAA(),this.methodBB(),this.methodCC())
     // .subscribe(([a,b,c]) => {
@@ -60,16 +113,18 @@ export class FirstcomponentComponent implements OnInit {
     //   this.data.push(c);
     // });
   }
-  data: string[] = [];
+
   methodAA(): Observable<string> {
-    return of('B');
+    return of('A');    
   }
   methodBB(): Observable<string> {
     return new Observable<string>(observer => {
       let count = 0;
       const interval = setInterval(() => {
         observer.next((count++).toString());
-        if(count>=10){clearInterval(interval); observer.complete(); observer.unsubscribe();}
+        if (count >= 10) { 
+          clearInterval(interval); observer.complete(); observer.unsubscribe(); 
+        }
         console.log('interval fired');
       }, 1000);
     });

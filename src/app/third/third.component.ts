@@ -11,7 +11,7 @@ export class ThirdComponent implements OnInit {
   constructor(private route: ActivatedRoute) {  }
 
   ngOnInit(): void {
-    alert(this.route.snapshot.params['id']);
+  //  alert(this.route.snapshot.params['id']);
   }
 
 }

@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: 'first', component: FirstcomponentComponent // detail
     , children: [
-      { path: ':id/edit', component: ThirdComponent }
+      { path: ':id', component: ThirdComponent }
     ]
   },
 
