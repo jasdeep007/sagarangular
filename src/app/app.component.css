@@ -9,3 +9,12 @@ h1 {
 .b2 {
     background-color: green;
 }
+
+input {
+    width: 100%;
+}
+
+.active {
+    background: orange;
+    color: white;
+}

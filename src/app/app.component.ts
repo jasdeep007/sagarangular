@@ -6,15 +6,18 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, OnDestroy {
+  twowaybindingexample: any = 'jasdeep singh';
+
+
   title = 'sagardemo';
   variable: string = 'value of variable';
   data: string[] = ['a', 'b', 'c'];
   isActive: number = 3;
-  anyvalue:string='1';
+  anyvalue: string = '1';
   i: number = 0;
   changeclass: string = 'b1';
-  style: any = {'background-color':'orange'};
-  logicclass:string='b1';
+  style: any = { 'background-color': 'orange' };
+  logicclass: string = 'b1';
   additem() {
     this.data.push('d');
     this.changeclass = this.changeclass == 'b1' ? 'b2' : 'b1';
@@ -27,10 +30,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.title = 'changed value';
 
-    if(this.anyvalue.length>3){
-      this.logicclass='b2';
+    if (this.anyvalue.length > 3) {
+      this.logicclass = 'b2';
     }
-    else this.logicclass='b1';
+    else this.logicclass = 'b1';
   }
 
   ngOnDestroy() {
