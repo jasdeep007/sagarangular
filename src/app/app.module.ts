@@ -9,6 +9,10 @@ import { AppComponent } from './app.component';
 import { FirstcomponentComponent } from './firstcomponent/firstcomponent.component';
 import { SecondcomponentComponent } from './secondcomponent/secondcomponent.component';
 import { ThirdComponent } from './third/third.component';
+import { PipesdemoComponent } from './pipesdemo/pipesdemo.component';
+import { CuberootPipe } from './pipes/cuberoot.pipe';
+import { CustomdirectiveComponent } from './customdirective/customdirective.component';
+import { SagarDirective } from './directives/sagar.directive';
 
 
 @NgModule({
@@ -16,7 +20,11 @@ import { ThirdComponent } from './third/third.component';
     AppComponent,
     FirstcomponentComponent,
     SecondcomponentComponent,
-    ThirdComponent
+    ThirdComponent,
+    PipesdemoComponent,
+    CuberootPipe,
+    CustomdirectiveComponent,
+    SagarDirective
   ],
   imports: [
     BrowserModule,

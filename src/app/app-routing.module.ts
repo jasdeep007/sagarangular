@@ -5,17 +5,20 @@ import { beforeleave } from 'src/Guard/beforeleave';
 import { demodeactivateguard } from 'src/Guard/demodeactivateguard';
 import { demoguard } from 'src/Guard/demoguard';
 import { AppComponent } from './app.component';
+import { CustomdirectiveComponent } from './customdirective/customdirective.component';
 import { FirstcomponentComponent } from './firstcomponent/firstcomponent.component';
+import { PipesdemoComponent } from './pipesdemo/pipesdemo.component';
 import { SecondcomponentComponent } from './secondcomponent/secondcomponent.component';
 import { ThirdComponent } from './third/third.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: SecondcomponentComponent },
-
+  { path: 'pipe', component: PipesdemoComponent },
+  { path: 'customdirective', component: CustomdirectiveComponent },
   {
     path: 'first/second', component: SecondcomponentComponent, pathMatch: 'full'
-    , canActivate: [demoguard], canDeactivate:[demodeactivateguard]
+    , canActivate: [demoguard], canDeactivate: [demodeactivateguard]
   },
 
   {
