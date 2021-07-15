@@ -1,0 +1,30 @@
+<div class="one">
+    <p>child-one works!</p>
+    <h1>Data from parent</h1>
+    <table>
+        <thead>
+            <th>
+                <tr>
+                    <td>
+                        Name
+                    </td>
+                    <td>
+                        Age
+                    </td>
+                </tr>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    {{dataComingFromParent.name}}
+                </td>
+                <td>
+                    {{dataComingFromParent.age}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-child-inner-inner-one [datatochild]="dataComingFromParent"></app-child-inner-inner-one>
+    <!-- <button (click)="senddatatoparent()">Send Data to parent</button> -->
+</div>

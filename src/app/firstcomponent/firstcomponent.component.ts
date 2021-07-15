@@ -13,13 +13,62 @@ export class FirstcomponentComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute) { }
+
   data: string[] = [];
 
-  // A very real time example of this is 
-  // getting countries, then states and then cities. its also one time,,
-  // but here we are testing,,streams....keep on sending data after 1 second
-  // lets run it,,,
-  callnewspaperobservable() { // simple method (public by default, as its visible in html also)
+
+  call3obseravblesinTRADITIONALWAY() {
+    // we have 3 observables created in the last video,,we will use that
+    // first and third are quick,, but second one emits data after every 1 second,,,
+
+    // //lets chain them and see disadvantage
+    // // I will chain a then helloFromnewspaperguy then b
+    // this.A().subscribe((val) => {
+    //   // A done
+    //   this.data.push(val);
+    //   this.helloFromnewspaperguy().subscribe((value) => {
+    //     // helloFromnewspaperguy done... but it will emit,,,after every 1 second,,bcs of interval
+    //     this.data.push(value);
+    //     // then call B()
+    //     this.B().subscribe((bvalue) => {
+    //       this.data.push(bvalue);
+    //       // finally we can show loader.....
+    //     });
+    //   });
+    // });
+
+    // forkjoin has syntax that accepts each observable output as an object value
+    // lets see
+
+    // thats it,,, now it will wait for the result and give us final object
+    // lets see
+    forkJoin({a:this.A(),b:this.helloFromnewspaperguy(),c:this.B()})
+    .subscribe(({a,b,c})=>{
+      // when all done a,b,c then let us know,,and give us the final value only
+      this.data.push(a);
+      this.data.push(b);
+      this.data.push(c);
+      // hide loader here
+
+      // lets see the output
+    });
+
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+  callnewspaperobservable() {
     this.A().subscribe((v) => {
       this.data.push(v);
       // when a done,, then second
@@ -34,13 +83,12 @@ export class FirstcomponentComponent implements OnInit {
   }
   newspapercount: number = 0;
   A(): Observable<string> {
-    return of('A');
+    return of('A'); // this one quickly respond,,
   }
   B(): Observable<string> {
-    return of('B');
+    return of('B'); // this one too quickly respond
   }
-  // COOL LETS RUN IT
-  helloFromnewspaperguy(): Observable<string> {
+  helloFromnewspaperguy(): Observable<string> { // this one emits data,,after every one second,,,
     // lets make this method as promise,,,,to see the real difference...
     return new Observable(observer => {// simple syntax change
       const timer_WHICH_WE_FORGOT = setInterval(() => {

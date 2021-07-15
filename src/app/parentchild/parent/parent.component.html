@@ -1,0 +1,30 @@
+<p>parent works!</p>
+<p>Name : {{datafromparent.name}}</p>
+<p>Age {{datafromparent.age}}</p>
+
+<app-child-one [dataComingFromParent]="datafromparent" (datafromchild)="changevalue($event)"></app-child-one>
+<button (click)="sendnewReferenceToChild()">Send Data to Child with new reference</button>
+<button (click)="sendoldReferenceToChild()">Send Data to Child with old reference</button>
+<br>
+<br>
+<input (input)="inputchange($event)" [(ngModel)]="datafromparent.age">
+<div *ngFor="let d of loopdata">
+    <app-findbigsum [obser]="obserdata"></app-findbigsum>
+</div>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<app-child-two></app-child-two>
+
+
+<app-child-three></app-child-three>
+
+<app-child-four></app-child-four>
