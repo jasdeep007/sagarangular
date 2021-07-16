@@ -42,23 +42,26 @@ export class FirstcomponentComponent implements OnInit {
 
     // thats it,,, now it will wait for the result and give us final object
     // lets see
-    forkJoin({a:this.A(),b:this.helloFromnewspaperguy(),c:this.B()})
-    .subscribe(({a,b,c})=>{
-      // when all done a,b,c then let us know,,and give us the final value only
-      this.data.push(a);
-      this.data.push(b);
-      this.data.push(c);
-      // hide loader here
+    forkJoin({ a: this.A(), b: this.helloFromnewspaperguy(), c: this.B() })
+      .subscribe(({ a, b, c }) => {
+        // when all done a,b,c then let us know,,and give us the final value only
+        this.data.push(a);
+        this.data.push(b);
+        this.data.push(c);
+        // hide loader here
 
-      // lets see the output
-    });
-
-
-
-
+        // lets see the output
+      });
   }
 
-
+  combinelatest() {
+    combineLatest(this.A(), this.helloFromnewspaperguy(), this.B())
+      .subscribe(([a, b, c]) => {
+        this.data.push(a);
+        this.data.push(b);
+        this.data.push(c);
+      });
+  }
 
 
 
