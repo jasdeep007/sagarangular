@@ -14,8 +14,6 @@ import { CuberootPipe } from './pipes/cuberoot.pipe';
 import { CustomdirectiveComponent } from './customdirective/customdirective.component';
 import { SagarDirective } from './directives/sagar.directive';
 import { ParentComponent } from './parentchild/parent/parent.component';
-import { ChildOneComponent } from './parentchild/child-one/child-one.component';
-import { ChildTwoComponent } from './parentchild/child-two/child-two.component';
 import { ChildThreeComponent } from './parentchild/child-three/child-three.component';
 import { ChildFourComponent } from './parentchild/child-four/child-four.component';
 import { ChildInnerOneComponent } from './parentchild/childOne/child-inner-one/child-inner-one.component';
@@ -36,8 +34,6 @@ import { FindbigsumComponent } from './parentchild/findbigsum/findbigsum.compone
     CustomdirectiveComponent,
     SagarDirective,
     ParentComponent,
-    ChildOneComponent,
-    ChildTwoComponent,
     ChildThreeComponent,
     ChildFourComponent,
     ChildInnerOneComponent,

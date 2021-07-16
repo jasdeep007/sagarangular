@@ -4,10 +4,16 @@ import { BehaviorSubject, of } from 'rxjs';
 @Component({
   selector: 'app-parent',
   templateUrl: './parent.component.html',
-  styleUrls: ['./parent.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./parent.component.css']
 })
 export class ParentComponent implements OnInit {
+
+
+  data1: any = { name: 'jasdeep singh' };
+
+
+  data: BehaviorSubject<any> = new BehaviorSubject({ name: 'jasdeep singh' });
+
 
   obserdata: BehaviorSubject<any> = new BehaviorSubject({
     name: 'outtm', age: 3
@@ -15,6 +21,7 @@ export class ParentComponent implements OnInit {
   datafromparent: { name: string, age: number } = {
     name: 'outtm', age: 3
   };
+
 
   loopdata: number[] = [];
   constructor() { }
@@ -33,8 +40,10 @@ export class ParentComponent implements OnInit {
     }
     this.datafromparent.name = 'old reference';
   }
-  changevalue(data: any) {
-    //this.datafromparent = data;
+
+  dataone: any = { name: '' };
+  changevalue() {
+    this.data.next({ name: new Date().toString() });
   }
   inputchange(searchValue: any) {
     for (let u = 0; u < this.loopdata.length; u++) {

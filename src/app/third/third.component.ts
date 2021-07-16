@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -8,10 +8,13 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class ThirdComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {  }
+  @Input('data') data: any;
+  constructor(private route: ActivatedRoute, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-  //  alert(this.route.snapshot.params['id']);
+    //  alert(this.route.snapshot.params['id']);
   }
-
+  refresh() {
+    this.cd.detectChanges();
+  }
 }

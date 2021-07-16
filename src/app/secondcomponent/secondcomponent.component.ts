@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'secondcomponent',
   templateUrl: './secondcomponent.component.html',
-  styleUrls: ['./secondcomponent.component.css']
+  styleUrls: ['./secondcomponent.component.css'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class SecondcomponentComponent implements OnInit {
 
-  constructor() { }
+  @Input('data') data:any;
+  constructor(private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.data.subscribe((value:any)=>{
+      this.data=value; 
+    });
   }
 
 }
