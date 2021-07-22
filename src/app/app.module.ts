@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AuthGuard } from 'src/Guard/AuthGuard';
 import { beforeleave } from 'src/Guard/beforeleave';
@@ -21,7 +21,8 @@ import { ChildInnerTwoComponent } from './parentchild/childOne/child-inner-two/c
 import { ChildInnerInnerOneComponent } from './parentchild/child-one/child-inner-inner-one/child-inner-inner-one.component';
 import { ChildInnerInnerTwoComponent } from './parentchild/child-one/child-inner-inner-two/child-inner-inner-two.component';
 import { FindbigsumComponent } from './parentchild/findbigsum/findbigsum.component';
-
+import { FormtestingComponent } from './formtesting/formtesting.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,15 @@ import { FindbigsumComponent } from './parentchild/findbigsum/findbigsum.compone
     ChildInnerTwoComponent,
     ChildInnerInnerOneComponent,
     ChildInnerInnerTwoComponent,
-    FindbigsumComponent
+    FindbigsumComponent,
+    FormtestingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [AuthGuard,beforeleave],
   bootstrap: [AppComponent]

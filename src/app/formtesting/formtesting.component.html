@@ -1,0 +1,43 @@
+ ISVALID : {{finalform.valid}}
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Name
+            </td>
+            <td>
+                Username
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let d of data">
+            <td>
+                {{d.id}}
+            </td>
+            <td>
+                {{d.name}}
+            </td>
+            <td>
+                {{d.username}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<br> ISDIRTY : {{finalform.dirty}}
+<br> TOUCHED : {{finalform.touched}}
+<div [formGroup]="finalform">
+    Name : <input type="text" formControlName="name">
+    <b style="color: red;" *ngIf="finalform.get('name')?.touched && finalform.get('name')?.invalid">Required</b>
+    <br>Age : <input type="text" formControlName="age">
+    <b style="color: red;" *ngIf="finalform.get('age')?.touched && finalform.get('age')?.invalid && finalform.get('age')?.hasError('min')">Minimum age allowed is 10</b>
+    <b style="color: red;" *ngIf="finalform.get('age')?.touched && finalform.get('age')?.invalid && finalform.get('age')?.hasError('required')">Required</b>
+    <br>
+    <button (click)="submitform()">SUBMIT</button>
+    <button (click)="reset()">RESET</button>
+</div>
