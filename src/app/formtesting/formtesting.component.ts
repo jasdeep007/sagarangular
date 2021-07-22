@@ -17,7 +17,7 @@ export class FormtestingComponent implements OnInit {
   );
   constructor(private apiservice: ApicallsserviceService) { }
 
-  data: any;
+  data: any; 
   ngOnInit(): void {
     this.apiservice.getdata().subscribe((result: any[]) => {
       this.data = result;
