@@ -13,7 +13,7 @@ export class ApicallsserviceService {
   getdata(): Observable<any> {
     return this.http.get('http://jsonplaceholder.typicode.com/users');
   }
-  postdata(data: any): Observable<any> {
-    return this.http.post('http://outtm.com', data);
+  postdata(data: { name: string, age: number }): Observable<any> {
+    return this.http.post('http://localhost:37558/api/sagarapi/createuser', data);
   }
 }
